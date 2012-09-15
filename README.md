@@ -1,7 +1,10 @@
 FOREWORD
 ========
 
-_15 sep. 2012_. Time flies. I resurrected this old project in order to archive it here in my git repository but it is **no longer maintained**.
+_15 sep. 2012_.
+
+Time flies.
+I resurrected this old project in order to archive it here in my git repository but it is **no longer maintained**.
 The coding style is highly debatable and shall neither be considered as an example for anyone nor representative of my current style.
 That being said, it was a prototype of a minimalist coding style, and I'm still a minimalist.
 A few gadgets apart, this remains a usable skeleton project for anyone looking to start a new homebrew window manager for X11.
@@ -14,7 +17,9 @@ You'll find earlier versions as tarballs in the repository.
 Quark3 Overview
 ===============
 
-_30 sep. 2007._. Quark[WM] is a small (15k) and fast window manager designed to
+_30 sep. 2007_.
+
+Quark[WM] is a small (15k) and fast window manager designed to
 increase your productivity by:
 - organizing your windows (position and size),
 - letting you optimize this window organization policy,
@@ -54,13 +59,13 @@ docks are full, the remaining windows are simply stacked under the
 primary window, you are informed of this situation by a supplementary
 icon in the toolbar.
 
-Using Quark
------------
+Default Keyboard Shortcuts
+--------------------------
 
-Default Keyboard shortcuts:
-NOTE: Some shortcuts depend on the keyboard mapping, use qhelp to
-      know the exact shortcuts on your system. In the following
-      1 means an azerty keyboard, 2 means a qwerty keyboard.
+Some shortcuts depend on the keyboard mapping, use qhelp to
+know the exact shortcuts on your system. In the following
+1 means an azerty keyboard, 2 means a qwerty keyboard.
+
 - qwm, Exit: win+end
 - qwm, Focus the primary window: win+{1/z, 2/w}
 - qwm, Focus the next window: win+tab
@@ -78,10 +83,13 @@ NOTE: Some shortcuts depend on the keyboard mapping, use qhelp to
 
 Toolbar Usage
 -------------
-NOTE1: You can click anywhere in the toolbar, as the operation only
-       depends on the button used, icons are just here to help
-       remembering which button do what (left/middle/right).
-NOTE2: The toolbar is hidden in fullscreen mode.
+
+You can click anywhere in the toolbar, as the operation only
+depends on the button used, icons are just here to help
+remembering which button do what (left/middle/right).
+
+The toolbar is hidden in fullscreen mode.
+
 - left button: Swap docked/primary
 - middle button: Toggle fullscreen
 - right button: Close window
@@ -110,7 +118,7 @@ this case, check the following other window managers:
 - dwm, http://www.lab1702.net/fnurt/larswm/ 
 - wmii, http://www.suckless.org/wiki/wmii/
 - ion3, http://modeemi.fi/~tuomov/ion/
-- ratpoison, larswm, ...
+- ...
 
 See www.xwinman.org for a more complete list of wm, and
 http://www.gilesorr.com/wm/table.html for reviews.
