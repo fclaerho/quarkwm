@@ -15,12 +15,12 @@ Quick Installation Procedure
 ----------------------------
 
 1. Decompress the archive.
-2. Update the content of setup.sh as needed:
-   MEDIUMFONT, SMALLFONT, BIGFONT and XLIBPATH.
-3. Compile: $ ./setup.sh
+2. Update the content of `setup.sh` as needed:
+   `MEDIUMFONT`, `SMALLFONT`, `BIGFONT` and `XLIBPATH`.
+3. Compile: `$ ./setup.sh`
 4. Modify your .xinitrc. If you plan to use qbar, you need those
-   supplementary variables: $XTERM,$PLAYER,$MAILER,$BROWSER.
-   (See below for an example of .xinitrc). 
+   supplementary variables: `$XTERM`, `$PLAYER`, `$MAILER`, `$BROWSER`.
+   (See below for an example of `.xinitrc`). 
 5. Restart your session.
 
 If you encounter any problem, please read the following detailed
@@ -30,8 +30,7 @@ procedure (which contain additional notes that may be useful).
 Detailed Installation Procedure
 -------------------------------
 
- 1. Decompress the archive:
-	$ tar zxvf quark3_(version).tgz
+ 1. Decompress the archive: `$ tar zxvf quark3_(version).tgz`
 
  2. Update the content of 'setup.sh' to comply with your installation:
     The following variables may be modified:
