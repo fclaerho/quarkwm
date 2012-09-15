@@ -1,23 +1,26 @@
 FOREWORD
 ========
 
-_15 sep. 2012_.
+_15 Sep. 2012._
 
 Time flies.
 I resurrected this old project in order to archive it here in my git repository but it is **no longer maintained**.
 The coding style is highly debatable and shall neither be considered as an example for anyone nor representative of my current style.
 That being said, it was a prototype of a minimalist coding style, and I'm still a minimalist.
 A few gadgets apart, this remains a usable skeleton project for anyone looking to start a new homebrew window manager for X11.
+The documentation is pretty extensive, so dig in for details.
 I've refreshed the documentation syntax (which is now markdown) to make it more readable on github, its content is mostly unchanged.
 Unfortunately this project was not handled by a RCS, thus there is no revision history per se;
 You'll find earlier versions as tarballs in the repository.
+
+NOTE: this project is still hosted on sourceforge, see the feedback section below.
 
 * * *
 
 Quark3 Overview
 ===============
 
-_30 sep. 2007_.
+_30 Sep. 2007._
 
 Quark[WM] is a small (15k) and fast window manager designed to
 increase your productivity by:
