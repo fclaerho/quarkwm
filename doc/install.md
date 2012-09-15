@@ -4,24 +4,24 @@ Quark3 Installation Procedure
 _30 Sep. 2007._
 
 NOTES:
- - In the following '$' represents your shell prompt.
- - You don't need root privileges to install Quark as, in fact,
-   nothing is installed: binaries are left in the archive directory
-   and not copied in the system directories by default so you can
-   play with it without messing your system.
+- In the following '$' represents your shell prompt.
+- You don't need root privileges to install Quark as, in fact,
+  nothing is installed: binaries are left in the archive directory
+  and not copied in the system directories by default so you can
+  play with it without messing your system.
 
 
 Quick Installation Procedure
 ----------------------------
 
- 1. Decompress the archive.
- 2. Update the content of setup.sh as needed:
-    MEDIUMFONT, SMALLFONT, BIGFONT and XLIBPATH.
- 3. Compile: $ ./setup.sh
- 4. Modify your .xinitrc. If you plan to use qbar, you need those
-    supplementary variables: $XTERM,$PLAYER,$MAILER,$BROWSER.
-    (See below for an example of .xinitrc).
- 5. Restart your session.
+1. Decompress the archive.
+2. Update the content of setup.sh as needed:
+   MEDIUMFONT, SMALLFONT, BIGFONT and XLIBPATH.
+3. Compile: $ ./setup.sh
+4. Modify your .xinitrc. If you plan to use qbar, you need those
+   supplementary variables: $XTERM,$PLAYER,$MAILER,$BROWSER.
+   (See below for an example of .xinitrc). 
+5. Restart your session.
 
 If you encounter any problem, please read the following detailed
 procedure (which contain additional notes that may be useful).
