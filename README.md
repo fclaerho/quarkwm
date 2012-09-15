@@ -1,6 +1,16 @@
--- Quark3 Overview
--- 20070930/FC
+FOREWORD
+========
 
+I resurrected this old project in order to archive it here in my git repository but it is **no longer maintained**.
+The coding style is highly debatable and shall neither be considered as an example for anyone nor representative of my current style.
+That being said, it was a prototype of a minimalist coding style, and I'm still a minimalist.
+A few gadgets apart, this is a usable skeleton project for anyone looking to start a new homebrew window manager.
+
+* * *
+
+Quark3 Overview
+===============
+20070930/FC
 
 Quark[WM] is a small (15k) and fast window manager designed to
 increase your productivity by:
