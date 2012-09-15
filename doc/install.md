@@ -15,7 +15,7 @@ Quick Installation Procedure
 ----------------------------
 
  1. Decompress the archive.
- 2. Update the content of setup.sh:
+ 2. Update the content of setup.sh as needed:
     MEDIUMFONT, SMALLFONT, BIGFONT and XLIBPATH.
  3. Compile: $ ./setup.sh
  4. Modify your .xinitrc. If you plan to use qbar, you need those
@@ -23,15 +23,15 @@ Quick Installation Procedure
     (See below for an example of .xinitrc).
  5. Restart your session.
 
- If you encounter any problem, please read the following detailed
- procedure (which contain additional notes that may be useful).
+If you encounter any problem, please read the following detailed
+procedure (which contain additional notes that may be useful).
 
 
 Detailed Installation Procedure
 -------------------------------
 
  1. Decompress the archive:
-    $ tar zxvf quark3_(version).tgz
+	$ tar zxvf quark3_(version).tgz
 
  2. Update the content of 'setup.sh' to comply with your installation:
     The following variables may be modified:
@@ -52,15 +52,15 @@ Detailed Installation Procedure
 
  3. Check that the two files 'setup.sh' and '.build.sh'
     are executable, if you're not sure, type:
-    $ chmod u+x setup.sh
-    $ chmod u+x .build.sh
+	$ chmod u+x setup.sh
+	$ chmod u+x .build.sh
 
     NOTE: .build.sh is a small script independent of any project which
           performs the real compilation job, it is called by setup.sh
           with the appropriate flags for the Quark modules.
 
  4. Compile the sources:
-     $ ./setup.sh
+	$ ./setup.sh
     It should end with 'Ok', otherwise read the paragraph 'Compilation
     failure' below.
 
@@ -115,16 +115,16 @@ Detailed Installation Procedure
     your new window manager and to start the other tools.
 
     Example of .xinitrc:
-    ---8<---
-    export XTERM='xterm -bg black -fg lightgreen'
-    export PLAYER='xmms -t'
-    export MAILER='thunderbird'
-    export BROWSER='firefox'
-    /path/to/quark3/qbg 0& # Set a black background.
-    /path/to/quark3/qbar&
-    /path/to/quark3/qrun&
-    /path/to/quark3/qwm
-    --->8---
+	---8<---
+	export XTERM='xterm -bg black -fg lightgreen'
+	export PLAYER='xmms -t'
+	export MAILER='thunderbird'
+	export BROWSER='firefox'
+	/path/to/quark3/qbg 0& # Set a black background.
+	/path/to/quark3/qbar&
+	/path/to/quark3/qrun&
+	/path/to/quark3/qwm
+	--->8---
 
     This example is ok if the default configuration suits you,
     otherwise you will need additional lines to reconfigure the
@@ -141,10 +141,10 @@ Detailed Installation Procedure
            the clock is drawn but the image is rendered above so the
            clock will initially be hidden. To avoid this case, simply
            avoid to launch the 1st program asynchronously:
-           ...
-           display -window root wallpaper.jpg # No &
-           /path/to/quark3/qbar&
-           ...
+			...
+			display -window root wallpaper.jpg # No &
+			/path/to/quark3/qbar&
+			...
            By using this command, qbar is launched only after the
            completion of the other command (display) so that first
            the wallpaper is rendered and then the clock is rendered
