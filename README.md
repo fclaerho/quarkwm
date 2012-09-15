@@ -6,11 +6,11 @@ The coding style is highly debatable and shall neither be considered as an examp
 That being said, it was a prototype of a minimalist coding style, and I'm still a minimalist.
 A few gadgets apart, this remains a usable skeleton project for anyone looking to start a new homebrew window manager for X11.
 I've refreshed the documentation syntax (which is now markdown) to make it more readable on github, its content is mostly unchanged.
-Unfortunately this repository only hold the last version (Quark3). 
+Unfortunately this project was not handled by a RCS, thus the revision history is lost; this repository only hold the last version (Quark3). 
 
 * * *
 
-30 sep. 2007
+_30 sep. 2007._
 
 Quark3 Overview
 ===============
