@@ -105,9 +105,9 @@ configuration or O/S: I can't fix something if I never heard about it.
 This release has been developped using a GNU/Linux distribution and
 only depends on the X11 library, the C standard library and a few
 posix calls; it should therefore works well on any unix-like system.
-You can also contact me directly through the sourceforge interface or
-by using this address: 0xfc.dev@mailnull.com.
+You can also contact me directly through the sourceforge interface.
 
+EDIT: I removed the email which is no longer valid.
 
 Related Material
 ----------------
