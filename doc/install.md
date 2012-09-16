@@ -32,7 +32,7 @@ Detailed Installation Procedure
 
  1. Decompress the archive: `$ tar zxvf quark3_(version).tgz`
 
- 2. Update the content of 'setup.sh' to comply with your installation.
+ 2. Update the content of `setup.sh` to comply with your installation.
     The following variables may be modified:
     - `MEDIUMFONT`, `SMALLFONT`, `BIGFONT`:
       Use fonts that are installed on your system, or check the
@@ -63,67 +63,66 @@ Detailed Installation Procedure
     It should end with 'Ok';
     otherwise read the paragraph 'Compilation failure' below.
 
-    NOTE1: By default setup.sh compiles all the modules. If you are
+    NOTE1: By default `setup.sh` compiles all the modules. If you are
            already familiar with QuarkWM and only need some specific
-           modules (only qwm for instance) then simply invoke setup.sh
-           with the module source name, e.g. '$ ./setup.sh qwm.c'.
+           modules (only qwm for instance) then simply invoke `setup.sh`
+           with the module source name, e.g. `$ ./setup.sh qwm.c`.
 
-    Compilation Failure:
-     If the compilation fails, check XLIBPATH as explained above.
+    **Compilation Failure**
+     If the compilation fails, check `XLIBPATH` as explained above.
      If the library is not found you should get something like:
-     "ld: cannot find -lX11".
+     `ld: cannot find -lX11`.
      If this is not the error cause, please post a message on
      the forum (or send it to me by mail, see readme.txt/contact)
      detailing the problem (remember to copy/paste the error
-     using the verbose mode: '$ ./setup.sh V'). You can also try
+     using the verbose mode: `$ ./setup.sh V`). You can also try
      to debug the code yourself if you wish, recompile everything
-     in development mode '$ ./setup.sh D' before starting.
+     in development mode `$ ./setup.sh D` before starting.
 
     If the compilation succeeds, you get several binaries:
-      - qwm, the window manager.
+      - **qwm**, the window manager.
         NOTE: Please keep in mind that qwm is only the window manager
               and not an application launcher, you need an additional
               tool to launch your programs (qbar for instance, but
               any other tool will do fine).
-      - qbg, a small tool to set your background color.
+      - **qbg**, a small tool to set your background color.
         It doesn't allow to display images for the moment.
-      - qbar, a tool displaying an OSD clock and allowing to
+      - **qbar**, a tool displaying an OSD clock and allowing to
         launch some applications through keyboard shortcuts.
-      - qctl, a command line tool allowing to communicate with
+      - **qctl**, a command line tool allowing to communicate with
         the modules (and mostly used to reconfigure them).
-      - qform is a tool to dynamically build forms/textboxes,
+      - **qform** is a tool to dynamically build forms/textboxes,
         see qforms.txt for details.
-      - qrun allow to invoke a text box to launch applications
+      - **qrun** allows to invoke a text box to launch applications
         by typing the shell command.
-      - qhelp displays a text box listing the default Quark
+      - **qhelp** displays a text box listing the default Quark
         shortcuts.
-      - qinit, a tool to reconfigure the modules in .xinitrc,
-        see configuration.txt for details.
+      - **qinit**, a tool to reconfigure the modules in .xinitrc,
+        see `configuration.txt` for details.
 
- 5. Check the fonts are ok, try 'qhelp' for instance, you should
+ 5. Check the fonts are ok, try `qhelp` for instance, you should
     see 3 types of font (small/medium/big). If one of them is
     not viewable or if the execution fails with an error message
     saying it cannot load a font, modify the corresponding value
-    in 'setup.sh' and restart from step b. Try 'qbar' too, while
-    you're at it.
+    in `setup.sh` and restart from step 2. Also try `qbar`.
 
-    NOTE: The font named 'snap', among other nice ones, can be
+    NOTE: The font named `snap`, among other nice ones, can be
           downloaded there: http://artwizaleczapka.sourceforge.net/
 
- 6. Modify your X startup file (~/.xinitrc) to specify QuarkWM as
+ 6. Modify your X startup file `~/.xinitrc` to specify QuarkWM as
     your new window manager and to start the other tools.
 
-    Example of .xinitrc:
-	---8<---
-	export XTERM='xterm -bg black -fg lightgreen'
-	export PLAYER='xmms -t'
-	export MAILER='thunderbird'
-	export BROWSER='firefox'
-	/path/to/quark3/qbg 0& # Set a black background.
-	/path/to/quark3/qbar&
-	/path/to/quark3/qrun&
-	/path/to/quark3/qwm
-	--->8---
+    Example of `.xinitrc`:
+		---8<---
+		export XTERM='xterm -bg black -fg lightgreen'
+		export PLAYER='xmms -t'
+		export MAILER='thunderbird'
+		export BROWSER='firefox'
+		/path/to/quark3/qbg 0& # Set a black background.
+		/path/to/quark3/qbar&
+		/path/to/quark3/qrun&
+		/path/to/quark3/qwm
+		--->8---
 
     This example is ok if the default configuration suits you,
     otherwise you will need additional lines to reconfigure the
