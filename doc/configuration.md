@@ -11,11 +11,11 @@ the source code to adapt the configuration to your needs (which is
 rather deprecated but straightforward) or you can use the builtin
 communication system: each Quark module is 'connected' to a common
 message bus and can send commands or request data. A module will
-only process messages identified by its pid. You can use qctl to
-send messages from the command line (qctl allow you to use names
+only process messages identified by its pid. You can use `qctl` to
+send messages from the command line (`qctl` allow you to use names
 instead of raw codes which is bit more user friendly).
 
- E.g. to get the qwm version:
+ E.g. to get the `qwm` version:
 
 	$ ps -A|grep qwm
 	5768 tty1     00:00:00 qwm
@@ -24,7 +24,7 @@ instead of raw codes which is bit more user friendly).
 
 NOTE:
 'quark3/' is a common prefix for any module message and is not
-related to the reply received by qctl in the above example.
+related to the reply received by `qctl` in the above example.
 
 Messages exchanged are of the form: `{op key value}` where each field
 is an unsigned integer. They are only designed for discrete operations
@@ -45,7 +45,7 @@ module, use `help`, example:
 	quark3/ 10 dockid _ : Request dock side
 	quark3/ 11 dockid _ : Request dock size%
 
-For instance the second line (1 _ _ : Request version) means that
+For instance the second line `(1 _ _ : Request version)` means that
 a message with op=1, key=anything, value=anything, sent to qwm,
 requests its version. The command `$ qctl 5768 version` (above) is
 in fact (almost) equivalent to `$ qctl 5768 1 0 0` (or any value
@@ -62,21 +62,21 @@ Once your list of qctl commands is ready (the sections below detail
 the configurable parameters of the main modules), you have to modify
 `~/.xinitrc` to take into account those modifications at startup. The
 single subtlety is that you must know the process id of a module in
-order to use qctl. Though it can be done using a bit of shell
+order to use `qctl`. Though it can be done using a bit of shell
 programming (and the variable $!, which return the pid of the last
 process run asynchronously), this is not straightforward. You should
-instead use qinit, a tool provided with quark.
+instead use `qinit`, a tool provided with quark.
 
 The syntax is the following:
 
 	$ qinit -start (module name) -ctl (module name) (qctl cmd)
 
-where you can use '-start' and '-ctl' multiple times, e.g.:
+where you can use `-start` and `-ctl` multiple times, e.g.:
 
 	$ qinit -start qbar -start qrun -ctl qrun 'setKeycode 0 28'
 
-Qinit terminates when the 1st module launched terminates, so if you
-have to reconfigure qwm, keep it in the first position. Example:
+`Qinit` terminates when the 1st module launched terminates, so if you
+have to reconfigure `qwm`, keep it in the first position. Example:
 
 	export XTERM='xterm -bg black -fg lightgreen'
 	export PLAYER='xmms -t'
@@ -95,8 +95,8 @@ with `-start`. Besides, the reconfiguration command must be
 parsed as a single argument, so be sure to enclose it
 between quotes.
 
- You don't have to use qinit for modules that are not reconfigured,
- remember to run qinit asynchronously in this case, e.g.:
+ You don't have to use `qinit` for modules that are not reconfigured,
+ remember to run `qinit` asynchronously in this case, e.g.:
 
 	...
 	/path/to/quark3/qinit -start qbar -ctl qbar 'setKeycode 0 28'&
@@ -111,7 +111,7 @@ Qwm Configuration
 The default meta key is the 'windows' key. It cannot be changed dynamically.
 If, however, you're using a keyboard without this key,
 you'll have to modify the sources: simply change every instance of the
-constant 'Mod4Mask' in x11.h and replace it by Mod1Mask (alt) for instance.
+constant `Mod4Mask` in `x11.h` and replace it by `Mod1Mask` (alt) for instance.
 Remember to recompile the modules and to restart your X session.
 
 Key Ids and associated default shortcuts:
@@ -129,13 +129,13 @@ To change a key, you must know the new keycode value first, to this
 end you can use the program `xev` (provided with x11/xorg).
 
 Option 1: Modify the source code
-1. edit qwm.c,
+
+1. edit `qwm.c`,
 2. jump to line 18: `I gKeys[]={103,23,24,25,53,54,41,9,10};`
 3. replace the value(s) (the order is given in the list above).
-	Take care to not change the array size.
 4. recompile and restart your session.
 
-Option 2: Use qctl
+Option 2: Use `qctl`
 E.g. To set the keycode 42 for 'exit' (of keyid 0, see above):
 
 	$ ps -A|grep qwm
@@ -180,7 +180,7 @@ So the default configuration {{0,0,30},{0,3,20}} means:
 
 For example, if you want to add a dock on the right, using 10% of
 the screen width and storing windows from the bottom to the top,
-add the following entry: {1,1,10}.
+add the following entry: `{1,1,10}`.
 You can also nest the docks, for instance, to get two successive
 docks on the left, using respectively 30% and 10% of the screen
 width: `gDocks={{0,0,30},{0,0,10}}`.
@@ -190,19 +190,19 @@ use qctl, as for the keyboard. The 3 parameters can be changed.
 
 NOTE: Dock indexes start from 0 (so the second dock index is 1).
 
-Example:
+Examples:
 
-1. To change the second dock size to 30%:
+- To change the second dock size to 30%:
 
 		$ ps -A|grep qwm
 		5768 tty1     00:00:00 qwm
 		$ qctl 5768 setDockSize 1 30
 
-2. To change the second dock size order ('reverse' field):
+- To change the second dock size order ('reverse' field):
 
 		$ qctl 5768 setDockReverse 1 1
 
-3. To change the second dock side (set it on top):
+- To change the second dock side (set it on top):
 
 		$ qctl 5768 setDockReverse 1 2
 
@@ -276,11 +276,11 @@ Communication Bus, Additional Notes
 ### Implementation
 
 The communication bus is based on an IPC message queue coupled with
-a signal (SIGHUP) to allow events multiplexing with select (nap.c).
-The message queue used can be viewed using the command 'ipcs' (and
-deleted with ipcrm -q (qid) where (qid) is the queue id returned by
-'ipcs'). Only one module is allowed to call closeBus() (as it
-deletes the list), this is done by qwm.
+a signal (SIGHUP) to allow events multiplexing with select (in `nap.c`).
+The message queue used can be viewed using the command `ipcs` (and
+deleted with `ipcrm -q (qid)` where (qid) is the queue id returned by
+`ipcs`). Only one module is allowed to call `closeBus()` (as it
+deletes the list), this is done by `qwm`.
 
 ### Bus Usage: Minimal Code Sample
 
@@ -309,9 +309,9 @@ deletes the list), this is done by qwm.
 		return 0;
 	}
 
-Once compiled (copy the source code in a file, say test.c and type
-./setup.sh test.c) and run, this program can interact with qctl:
-- qctl (pid) help
-- qctl (pid) 1 0 0 +
-- qctl (pid) 2 0 0 +
+Once compiled (copy the source code in a file, say `test.c` and type
+`$ ./setup.sh test.c`) and run, this program can interact with `qctl`:
+- `qctl (pid) help`
+- `qctl (pid) 1 0 0 +`
+- `qctl (pid) 2 0 0 +`
 
