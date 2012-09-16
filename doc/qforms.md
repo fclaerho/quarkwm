@@ -1,21 +1,23 @@
--- QForms Overview
--- 20070930/FC
+QForms Overview
+===============
 
+_30 Sep. 2007._
 
-'QForms' is a small graphical toolkit to build html-like forms or
+QForms is a small graphical toolkit to build html-like forms or
 small user interfaces. QForms can be used in two ways: either
 directly from the command line (to build shell script interfaces
 for instance, like xmessage) or from a program. Those two cases
 are described below.
 
+**Disclaimer:**
 QForms are still under development and a lot of features are missing,
 nevertheless, the current version is stable and operational and can
-be used for *simple* applications.
+be used for simple applications.
 
 Forms are created as transient windows meaning they are not handled
 by the window manager, if you somehow loose the focus on a form you
 can only gain it again using the pointer (at last if you're using
-qwm). To avoid this situation, a form will simply grab the pointer
+`qwm`). To avoid this situation, a form will simply grab the pointer
 until it is closed (submitted or discarded) and more generally it
 will close itself if it looses the focus.
 
@@ -25,49 +27,50 @@ Use tab to switch between input controls. The text input control is
 quite limited: you can delete characters from the end (backspace)
 but you cannot use arrows. Press delete to erase the whole text.
 
+Command Line Usage
+------------------
 
-0. Command Line Usage
+You should have a binary named `qform` in the Quark archive;
+otherwise please refer to the installation procedure to get it.
+This is a command line tool allowing to dynamically create forms.
 
- You should have a binary named 'qform' in the Quark archive, this is
- the command line tool allowing to dynamically create forms.
+- By default the window is centered and its size is calculated from its content.
+	Its position can be modified:
+	you can either indicate absolute coordinates
+	or stick the window on a screen side.
+	`-x value|'l' for left|'c' for center (defaut)|'r' for right`
+	`-y value|'t' for top|'c' for center (default)|'b' for bottom`
+	See below for an example.
 
- - By default the window is centered and its size is calculated from
-   its content. Its position, however can be modified: you can either
-   indicate absolute coordinates or stick the window on a screen side.
-   -x value|'l' for left|'c' for center (defaut)|'r' for right
-   -y value|'t' for top|'c' for center (default)|'b' for bottom
-   See below for an example.
+- Controls.
+	Values for (alignment) are: `'l' (left), 'c' (center) or 'r' (right)`.
+	Values for (font) are: `'s' (small), 'm' (medium) or 'b' (big)`.
 
- - Controls:
-   Values for (alignment) are: 'l' (left), 'c' (center) or 'r' (right).
-   Values for (font) are: 's' (small), 'm' (medium) or 'b' (big).
+	Available controls:
+	- '-label (font) (alignment) (string)' to add a label.
+		e.g. `$ qform -label big center 'Hello World'` or `$ qform -l b c 'Hello World'`
+	- '--' to add a horizontal line.
+		e.g. `$ qform --`
+	- '-break' to add a vertical space.
+		e.g. `$ qform -break` or `$ qform -b`
+	- '-cmd (font) (alignment) (maxchar) (string)' to add a text input.
+		e.g. `$ qform -cmd medium center 10 'Default Value'` or `$ qform -c m c 10 'Default Value'`
 
-   Available controls:
-   '-label (font) (alignment) (string)' to add a label.
-     E.g. qform -label big center 'Hello World'
-        = qform -l b c 'Low Battery'
-   '--' to add a horizontal line.
-     E.g. qform --
-   '-break' to add a vertical space.
-     E.g. qform -break
-        = qform -b
-   '-cmd (font) (alignment) (maxchar) (string)' to add a text input.
-     E.g. qform -cmd medium center 10 'Default Value'
-        = qform -c m c 10 'Default Value'
+	Obviously, controls can be stacked:
+		e.g. `$ qform -l b c Test -- -cmd m c 10 test -x r -y b`
 
-   Obviously, several controls can be stacked:
-   E.g. $ qform -l b c Test -- -cmd m c 10 test
-        $ qform -l b c Test -- -cmd m c 10 test -x r -y b
+	Once the form is submitted, a list of each input value is displayed:
 
-   Once the form is submitted, a list of each input value is displayed:
-   E.g. $ qform -l b c Test -- -cmd m c 10 foo -cmd m c 10 bar
-        foo
-        bar
-        $ 
-   If the form is not submitted, there is no output.
+		$ qform -l b c Test -- -cmd m c 10 foo -cmd m c 10 bar
+		foo
+		bar
+		$ 
+
+	If the form is not submitted, there is no output.
 
 
-1. Within a C Program
+Within a C Program
+------------------
 
  - First include "qform.c" (this is not a header, there is no multiple
    inclusion protection so be sure to include it once only).

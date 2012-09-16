@@ -58,7 +58,7 @@ parameter, there is no reply to await.
 Storing Your New Configuration
 ------------------------------
 
-Once your list of qctl commands is ready (the sections below detail
+Once your list of `qctl` commands is ready (the sections below detail
 the configurable parameters of the main modules), you have to modify
 `~/.xinitrc` to take into account those modifications at startup. The
 single subtlety is that you must know the process id of a module in
@@ -230,7 +230,7 @@ Key Ids and associated default shortcuts:
 - 2, **mailer** (default: win+m/,) m: Azery kbd, ,: Qwerty.
 - 3, **browser** (default: win+b)
 
-Proceed as for qwm, e.g. to change the terminal shortcut to 'win+t':
+Proceed as for `qwm`, e.g. to change the terminal shortcut to 'win+t':
 
 	$ qctl 5767 setKeycode 0 28
 
