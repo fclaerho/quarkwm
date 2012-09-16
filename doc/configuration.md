@@ -129,11 +129,11 @@ To change a key, you must know the new keycode value first, to this
 end you can use the program `xev` (provided with x11/xorg).
 
 Option 1: Modify the source code
-- edit qwm.c,
-- jump to line 18: `I gKeys[]={103,23,24,25,53,54,41,9,10};`
-- replace the value(s) (the order is given in the list above).
+1. edit qwm.c,
+2. jump to line 18: `I gKeys[]={103,23,24,25,53,54,41,9,10};`
+3. replace the value(s) (the order is given in the list above).
 	Take care to not change the array size.
-- recompile and restart your session.
+4. recompile and restart your session.
 
 Option 2: Use qctl
 E.g. To set the keycode 42 for 'exit' (of keyid 0, see above):
@@ -147,66 +147,67 @@ NOTE:
 
 ### Docks
 
-  A dock is a rectangular area anchored to a side of the screen (or
-  of another dock if they are nested). Two docks are available by
-  default, which should be sufficient. This number cannot be
-  reconfigured dynamically, you have to modify the source code to
-  add/remove a dock but the modification is trivial:
-  - edit qwm.c,
-  - jump to line 19: 'Dock gDocks[]={{0,0,30},{0,3,20}};'
-  - add/remove an entry (see below for the meaning of each field),
-  - recompile and restart your session.
+A dock is a rectangular area anchored to a side of the screen (or
+of another dock if they are nested). Two docks are available by
+default, which should be sufficient. This number cannot be
+reconfigured dynamically, you have to modify the source code to
+add/remove a dock but the modification is trivial:
+1. edit qwm.c,
+2. jump to line 19: 'Dock gDocks[]={{0,0,30},{0,3,20}};'
+3. add/remove an entry (see below for the meaning of each field),
+4. recompile and restart your session.
 
-  Docks are only used when needed: if only one window is opened, it
-  uses the whole space (minus some margin), if you open another window,
-  the primary window is resized and the second one is docked using the
-  1st dock configuration. The second dock will be used when the first
-  one is full, and so on.
+Docks are only used when needed: if only one window is opened, it
+uses the whole space (minus some margin), if you open another window,
+the primary window is resized and the second one is docked using the
+1st dock configuration. The second dock will be used when the first
+one is full, and so on.
 
-  The default configuration is the following:
-  - a first dock on the left, using 30% of the screen width,
-  - a dock following on the bottom, using 20% of the screen height,
+The default configuration is the following:
+- a first dock on the left, using 30% of the screen width,
+- a dock following on the bottom, using 20% of the screen height,
 
-  An entry is composed of the following values: {reverse,side,size}
-  - reverse=0 means from 'top to bottom' if side is left or right or
-    'left to right' if side is top or bottom, reverse=1 for the
-    opposite meanings.
-  - side=0 for left, 1 for right, 2 for top, 3 for bottom.
-  - size is a percentage of the screen width (if side is left
-    or right) or height (if side is top or bottom).
+An entry is composed of the following values: {reverse,side,size}
+- reverse=0 means from 'top to bottom' if side is left or right or
+	'left to right' if side is top or bottom, reverse=1 for the opposite meanings.
+- side=0 for left, 1 for right, 2 for top, 3 for bottom.
+- size is a percentage of the screen width (if side is left or right) or height (if side is top or bottom).
 
-  So the default configuration {{0,0,30},{0,3,20}} means:
-  {0,0,30} -> A dock on the left (2nd 0), using 30% of the screen
-              width from top to bottom (1st 0).
-  {0,3,20} -> A dock on the bottom (3), using 20% of the screen
-              height, from left to right (1st 0).
+So the default configuration {{0,0,30},{0,3,20}} means:
+- {0,0,30} A dock on the left (2nd 0), using 30% of the screen width from top to bottom (1st 0).
+- {0,3,20} A dock on the bottom (3), using 20% of the screen height, from left to right (1st 0).
 
-  For example, if you want to add a dock on the right, using 10% of
-  the screen width and storing windows from the bottom to the top,
-  add the following entry: {1,1,10}.
-  You can also nest the docks, for instance, to get two successive
-  docks on the left, using respectively 30% and 10% of the screen
-  width: gDocks={{0,0,30},{0,0,10}}.
+For example, if you want to add a dock on the right, using 10% of
+the screen width and storing windows from the bottom to the top,
+add the following entry: {1,1,10}.
+You can also nest the docks, for instance, to get two successive
+docks on the left, using respectively 30% and 10% of the screen
+width: gDocks={{0,0,30},{0,0,10}}.
 
-  If you simply want to update an existing dock parameter, you can
-  use qctl, as for the keyboard. The 3 parameters can be changed.
+If you simply want to update an existing dock parameter, you can
+use qctl, as for the keyboard. The 3 parameters can be changed.
 
-  NOTE: Dock indexes start from 0 (so the second dock index is 1).
+NOTE: Dock indexes start from 0 (so the second dock index is 1).
 
-  E.g. 1/ To change the second dock size to 30%:
-          $ ps -A|grep qwm
-          5768 tty1     00:00:00 qwm
-          $ qctl 5768 setDockSize 1 30
-       2/ To change the second dock size order ('reverse' field):
-          $ qctl 5768 setDockReverse 1 1
-       3/ To change the second dock side (set it on top):
-          $ qctl 5768 setDockReverse 1 2
+E.g.
+1. To change the second dock size to 30%:
 
+		$ ps -A|grep qwm
+		5768 tty1     00:00:00 qwm
+		$ qctl 5768 setDockSize 1 30
+
+2. To change the second dock size order ('reverse' field):
+
+		$ qctl 5768 setDockReverse 1 1
+
+3. To change the second dock side (set it on top):
+
+		$ qctl 5768 setDockReverse 1 2
 
 Qbar configuration
 ------------------
 
- First the list of operations:
+First the list of operations:
 
 	$ ps -A|grep qbar
 	5767 tty1     00:00:00 qbar
