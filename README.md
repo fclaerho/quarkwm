@@ -14,7 +14,7 @@ The documentation is (relatively) pretty detailed, so dig in for explanations.
 
 I've refreshed the documentation syntax (which is now markdown) to make it more readable on github, its content is mostly unchanged.
 Unfortunately this project was not handled by a RCS, thus there is no revision history per se;
-You'll find earlier versions as tarballs in the repository.
+You'll find earlier revisions, dating from 2006, as tarballs in the repository.
 This project is still hosted on sourceforge, where it was first released, see the feedback section below.
 
 * * *
