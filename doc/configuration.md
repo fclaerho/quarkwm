@@ -152,6 +152,7 @@ of another dock if they are nested). Two docks are available by
 default, which should be sufficient. This number cannot be
 reconfigured dynamically, you have to modify the source code to
 add/remove a dock but the modification is trivial:
+
 1. edit `qwm.c`,
 2. jump to line 19: `Dock gDocks[]={{0,0,30},{0,3,20}};`
 3. add/remove an entry (see below for the meaning of each field),
@@ -190,6 +191,7 @@ use qctl, as for the keyboard. The 3 parameters can be changed.
 NOTE: Dock indexes start from 0 (so the second dock index is 1).
 
 Example:
+
 1. To change the second dock size to 30%:
 
 		$ ps -A|grep qwm
@@ -233,6 +235,7 @@ Proceed as for qwm, e.g. to change the terminal shortcut to 'win+t':
 	$ qctl 5767 setKeycode 0 28
 
 If you prefer to edit directly the source code:
+
 1. edit `qbar.c`
 2. jump to line 17: `I gOffset=1,gSide=3,gH,gKeys[]={26,33,47,56};`
 3. replace the value(s) for `gKeys` (the order is given in the list above).
@@ -245,6 +248,7 @@ Parameters of the clock:
 - offset (% from top or left of the screen depending on side).
 
 Option 1: Modify the source code
+
 1. edit `qbar.c`
 2. jump to line 17: `I gOffset=1,gSide=3,gH,gKeys[]={26,33,47,56};`
 3. change the value of `gOffset` and `gSide`,
