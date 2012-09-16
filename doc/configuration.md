@@ -1,5 +1,5 @@
-Quark3 Modules Configuration
-============================
+Quark3 Modules Configuration ❮‹
+===============================
 
 _30 Sep. 2007._
 

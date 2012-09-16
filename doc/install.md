@@ -1,5 +1,5 @@
-Quark3 Installation Procedure
-=============================
+Quark3 Installation Procedure ❮‹
+================================
 
 _30 Sep. 2007._
 

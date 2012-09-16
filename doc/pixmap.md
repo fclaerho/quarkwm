@@ -1,5 +1,5 @@
-Qwm Toolbar Icons
-=================
+Qwm Toolbar Icons ❮‹
+====================
 
 _30 Sep. 2007._
 
@@ -25,4 +25,4 @@ Reversed octets and final hexa array:
 	00000000 00000000 01000000 10000000 00100000 = 0x00 0x00 0x40 0x80 0x20
 	11111110 00000011 10000000 10101010 00111111 = 0xFE 0x03 0x80 0xAA 0x3F
 
-\+ two lines of 0s before and after (see qwm.c).
+\+ two lines of 0s before and after (see `qwm.c`).
