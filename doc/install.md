@@ -156,9 +156,9 @@ Detailed Installation Procedure
 	to select 'Default X session' to use your `.xinitrc` instead
 	or the system-wide startup file or the previous configuration.
 
-Final Note
-----------
+* * *
 
+**Disclaimer:**
 Be sure to have played a bit with QuarkWM and to know the basic shortcuts/limits before starting to work seriously with it.
 If something goes wrong (forgot the exit shortcut?),
 you can always use the sequence \<ctrl\>\<alt\>\<backspace\> to kill your X session;

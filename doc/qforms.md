@@ -47,13 +47,13 @@ This is a command line tool allowing to dynamically create forms.
 	Values for (font) are: `'s' (small), 'm' (medium) or 'b' (big)`.
 
 	Available controls:
-	- '-label (font) (alignment) (string)' to add a label.
+	- **label**, syntax: `-label (font) (alignment) (string)`.
 		e.g. `$ qform -label big center 'Hello World'` or `$ qform -l b c 'Hello World'`
-	- '--' to add a horizontal line.
+	- **horizontal separator**, syntac: `--`.
 		e.g. `$ qform --`
-	- '-break' to add a vertical space.
+	- **vertical space**, syntax: `-break`.
 		e.g. `$ qform -break` or `$ qform -b`
-	- '-cmd (font) (alignment) (maxchar) (string)' to add a text input.
+	- **text input**, syntax: `-cmd (font) (alignment) (maxchar) (string)`.
 		e.g. `$ qform -cmd medium center 10 'Default Value'` or `$ qform -c m c 10 'Default Value'`
 
 	Obviously, controls can be stacked:
@@ -72,21 +72,21 @@ This is a command line tool allowing to dynamically create forms.
 Within a C Program
 ------------------
 
- - First include "qform.c" (this is not a header, there is no multiple
-   inclusion protection so be sure to include it once only).
- - build the form, for example to get the equivalent of
-   'qform -l b c Test -- -cmd m c 10 test':
-   ---8<---
-   Form form=setupForm(0); // Argument 0 is the screen number.
-   Control control;
-   control.label=getLabel(2,1,"Test");
-   pushControl(&form,control);
-   control.bar=getBar(0);
-   pushControl(&form,control);
-   control.cmd=getCmd(1,1,10,"test");
-   pushControl(&form,control);
-   --->8---
-   API, (Really) Quick Reference:
+- First include `qform.c`.
+	This is not a header, there is no multiple inclusion protection so be sure to include it once only.
+- Build the form.
+	For example to get the equivalent of `qform -l b c Test -- -cmd m c 10 test`:
+
+		Form form=setupForm(0); // Argument 0 is the screen number.
+		Control control;
+		control.label=getLabel(2,1,"Test");
+		pushControl(&form,control);
+		control.bar=getBar(0);
+		pushControl(&form,control);
+		control.cmd=getCmd(1,1,10,"test");
+		pushControl(&form,control);
+
+   **API Reference**:
    - setupForm(screenid).
    - getLabel(font,alignment,text):
      where font is 0 for small, 1 for medium, 2 for big,
@@ -97,7 +97,8 @@ Within a C Program
      Same values than label. getCmd() returns an integer which is
      the input control index, you need it to retrieve the control
      value when processing the form.
- - if you're not using X at all, simply call showForm(&form) as
+
+- if you're not using X at all, simply call showForm(&form) as
    used in qhelp.c, else call setup() (perform the connection to X and
    load fonts), do your specific X part and call showForm(&form)
    when you need it. See qrun.c for an illustration.
@@ -105,7 +106,9 @@ Within a C Program
    event loops, which is not always easy to manage.
    showForm() returns 1 if the form is submitted, 0 otherwise.
    You can recall showForm() later without recreating the form object.
- - Input control value can be retrieved as follows:
-   char* s=form.controls[index].b.s;
-   Where index is the value returned by getCmd().
+- Input control value can be retrieved as follows:
+
+		char* s=form.controls[index].b.s;
+
+	Where index is the value returned by getCmd().
 
