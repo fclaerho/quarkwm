@@ -10,14 +10,14 @@ NOTES:
   and not copied in the system directories by default so you can
   play with it without messing your system.
 
-
 Quick Installation Procedure
 ----------------------------
 
 1. Decompress the archive.
 2. Update the content of `setup.sh` as suited for your system:
 	`MEDIUMFONT`, `SMALLFONT`, `BIGFONT` and `XLIBPATH`.
-3. Compile: `$ ./setup.sh`
+3. Compile: `$ ./setup.sh`.
+	See modules below for a description of the binaries.
 4. Modify your `.xinitrc`.
 	If you plan to use qbar, you need those supplementary variables:
 	`$XTERM`, `$PLAYER`, `$MAILER`, `$BROWSER`;
@@ -27,6 +27,28 @@ Quick Installation Procedure
 If you encounter any problem, please read the following detailed
 procedure (which contain additional notes that may be useful).
 
+Modules
+-------
+
+If the compilation succeeds, you get several binaries:
+
+- **qwm**, the window manager.
+	Keep in mind that qwm is only the window manager and not an application launcher
+	You need an additional tool to launch your programs;
+	`qbar` for instance, but any other tool will do fine.
+- **qbg**, a small tool to set your background color.
+	It doesn't allow to display images for the moment.
+- **qbar**, a tool displaying an OSD clock and allowing to
+	launch some applications through keyboard shortcuts.
+- **qctl**, a command line tool allowing to communicate with
+	the modules (and mostly used to reconfigure them).
+- **qform** is a tool to dynamically build forms/textboxes,
+	see `qforms.txt` for details.
+- **qrun** allows to invoke a text box to launch applications
+	by typing the shell command.
+- **qhelp** displays a text box listing the default Quark shortcuts.
+- **qinit**, a tool to reconfigure the modules in `.xinitrc`,
+	see `configuration.txt` for details.
 
 Detailed Installation Procedure
 -------------------------------
@@ -71,28 +93,6 @@ Detailed Installation Procedure
 		using the verbose mode: `$ ./setup.sh V`). You can also try
 		to debug the code yourself if you wish, recompile everything
 		in development mode `$ ./setup.sh D` before starting.
-
-    If the compilation succeeds, you get several binaries:
-      - **qwm**, the window manager.
-        NOTE: Please keep in mind that qwm is only the window manager
-              and not an application launcher, you need an additional
-              tool to launch your programs (qbar for instance, but
-              any other tool will do fine).
-      - **qbg**, a small tool to set your background color.
-        It doesn't allow to display images for the moment.
-      - **qbar**, a tool displaying an OSD clock and allowing to
-        launch some applications through keyboard shortcuts.
-      - **qctl**, a command line tool allowing to communicate with
-        the modules (and mostly used to reconfigure them).
-      - **qform** is a tool to dynamically build forms/textboxes,
-        see qforms.txt for details.
-      - **qrun** allows to invoke a text box to launch applications
-        by typing the shell command.
-      - **qhelp** displays a text box listing the default Quark
-        shortcuts.
-      - **qinit**, a tool to reconfigure the modules in .xinitrc,
-        see `configuration.txt` for details.
-
 
 5. Check the fonts are ok.
 	Try `qhelp` for instance, you should see 3 types of font (small/medium/big).
