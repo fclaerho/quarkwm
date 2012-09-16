@@ -93,6 +93,7 @@ Detailed Installation Procedure
       - **qinit**, a tool to reconfigure the modules in .xinitrc,
         see `configuration.txt` for details.
 
+
 5. Check the fonts are ok.
 	Try `qhelp` for instance, you should see 3 types of font (small/medium/big).
 	If one of them is not viewable or if the execution fails with an error message about loading fonts,
