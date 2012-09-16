@@ -148,18 +148,19 @@ Detailed Installation Procedure
 	files (`.bashrc` if you're using bash for instance) or
 	directly into the `.xinitrc` as shown above (better).
 
- 7. Restart your X session.
+7. Restart your X session.
 
- 8. If you're using a desktop manager (gdm, kdm, etc.), remember
-    to select 'Default X session' to use your `.xinitrc` instead
-    or the system-wide startup file or the previous configuration.
+8. Use the default X session.
+	If you're using a desktop manager (gdm, kdm, etc.), remember
+	to select 'Default X session' to use your `.xinitrc` instead
+	or the system-wide startup file or the previous configuration.
 
-FINAL NOTE: Be sure to have played a bit with QuarkWM and to know
-            the basic shortcuts/limits before starting to work
-            seriously with it.
-            If something goes wrong (forgot the exit shortcut?),
-            you can always use the sequence \<ctrl\>\<alt\>\<backspace\>
-            to kill your X session (remember that your data won't
-            be saved in this case as all the applications you
-            started are simply killed).
+FINAL NOTE:
+	Be sure to have played a bit with QuarkWM and to know
+	the basic shortcuts/limits before starting to work seriously with it.
+	If something goes wrong (forgot the exit shortcut?),
+	you can always use the sequence \<ctrl\>\<alt\>\<backspace\>
+	to kill your X session (remember that your data won't
+	be saved in this case as all the applications you
+	started are simply killed).
 
