@@ -49,7 +49,7 @@ This is a command line tool allowing to dynamically create forms.
 	Available controls:
 	- **label**, syntax: `-label (font) (alignment) (string)`.
 		e.g. `$ qform -label big center 'Hello World'` or `$ qform -l b c 'Hello World'`
-	- **horizontal separator**, syntac: `--`.
+	- **horizontal separator**, syntax: `--`.
 		e.g. `$ qform --`
 	- **vertical space**, syntax: `-break`.
 		e.g. `$ qform -break` or `$ qform -b`
@@ -86,29 +86,29 @@ Within a C Program
 		control.cmd=getCmd(1,1,10,"test");
 		pushControl(&form,control);
 
-   **API Reference**:
-   - setupForm(screenid).
-   - getLabel(font,alignment,text):
-     where font is 0 for small, 1 for medium, 2 for big,
-     and alignment is 0 for left, 1 for center, 2 for right.
-   - getBar(hidden):
-     hidden is 1 for a standard break, 0 for a horizontal line.
-   - getCmd(font,alignment,maxchar,defaultValue):
-     Same values than label. getCmd() returns an integer which is
-     the input control index, you need it to retrieve the control
-     value when processing the form.
-
-- if you're not using X at all, simply call showForm(&form) as
-   used in qhelp.c, else call setup() (perform the connection to X and
-   load fonts), do your specific X part and call showForm(&form)
-   when you need it. See qrun.c for an illustration.
+- if you're not using X at all, simply call `showForm(&form)` as
+   used in `qhelp.c`, else call `setup()` (perform the connection to X and
+   load fonts), do your specific X part and call `showForm(&form)`
+   when you need it. See `qrun.c` for an illustration.
    The main subtlety in this last case, it the presence of two
    event loops, which is not always easy to manage.
-   showForm() returns 1 if the form is submitted, 0 otherwise.
-   You can recall showForm() later without recreating the form object.
+   `showForm()` returns 1 if the form is submitted, 0 otherwise.
+   You can recall `showForm()` later without recreating the form object.
 - Input control value can be retrieved as follows:
 
 		char* s=form.controls[index].b.s;
 
-	Where index is the value returned by getCmd().
+	Where index is the value returned by `getCmd()`.
 
+### API Reference
+
+- `setupForm(screenid)`: create a new form.
+- `getLabel(font,alignment,text)`:
+	where font is 0 for small, 1 for medium, 2 for big,
+	and alignment is 0 for left, 1 for center, 2 for right.
+- `getBar(hidden)`:
+	hidden is 1 for a standard break, 0 for a horizontal line.
+- `getCmd(font,alignment,maxchar,defaultValue)`:
+	Same values than label. getCmd() returns an integer which is
+	the input control index, you need it to retrieve the control
+	value when processing the form.
