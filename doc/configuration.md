@@ -47,34 +47,37 @@ module, use `help`, example:
 
 For instance the second line (1 _ _ : Request version) means that
 a message with op=1, key=anything, value=anything, sent to qwm,
-requests its version. The command $ qctl 5768 version (above) is
-in fact (almost) equivalent to $ qctl 5768 1 0 0 (or any value
-instead of 0). To wait a reply after a command using raw codes with
-qctl, add '+' at the end, so 'qctl 5768 version' really is equivalent
-to 'qctl 5768 1 0 0 +'. If you simply want to update a module
+requests its version. The command `$ qctl 5768 version` (above) is
+in fact (almost) equivalent to `$ qctl 5768 1 0 0` (or any value
+instead of 0). To wait for a reply after a command using raw codes with
+qctl, add `+` at the end, so `qctl 5768 version` really is equivalent
+to `qctl 5768 1 0 0 +`. If you simply want to update a module
 parameter, there is no reply to await.
 
 
 Storing Your New Configuration
 ------------------------------
 
- Once your list of qctl commands is ready (the sections below detail
- the configurable parameters of the main modules), you have to modify
- ~/.xinitrc to take into account those modifications at startup. The
- single subtlety is that you must know the process id of a module in
- order to use qctl. Though it can be done using a bit of shell
- programming (and the variable $!, which return the pid of the last
- process run asynchronously), this is not straightforward. You should
- instead use qinit, a tool provided with quark.
+Once your list of qctl commands is ready (the sections below detail
+the configurable parameters of the main modules), you have to modify
+`~/.xinitrc` to take into account those modifications at startup. The
+single subtlety is that you must know the process id of a module in
+order to use qctl. Though it can be done using a bit of shell
+programming (and the variable $!, which return the pid of the last
+process run asynchronously), this is not straightforward. You should
+instead use qinit, a tool provided with quark.
 
- The syntax is the following:
+The syntax is the following:
+
 	$ qinit -start (module name) -ctl (module name) (qctl cmd)
- where you can use '-start' and '-ctl' multiple times, e.g.:
+
+where you can use '-start' and '-ctl' multiple times, e.g.:
+
 	$ qinit -start qbar -start qrun -ctl qrun 'setKeycode 0 28'
 
- Qinit terminates when the 1st module launched terminates, so if you
- have to reconfigure qwm, keep it in the first position. Example:
-	---8<---
+Qinit terminates when the 1st module launched terminates, so if you
+have to reconfigure qwm, keep it in the first position. Example:
+
 	export XTERM='xterm -bg black -fg lightgreen'
 	export PLAYER='xmms -t'
 	export MAILER='thunderbird'
@@ -85,12 +88,12 @@ Storing Your New Configuration
 		-ctl qbar 'setKeycode 0 28'\
 		-ctl qrun 'setKeycode 0 42'\
 		-ctl qwm 'setDockSize 0 20' # Not run asynchronously.
-	--->8---
 
- NOTES: A '-ctl' flag can only be used on a module already started
-        with '-start'. Besides, the reconfiguration command must be
-        parsed as a single argument, so be sure to enclose it
-        between quotes.
+NOTES:
+A '-ctl' flag can only be used on a module already started
+with '-start'. Besides, the reconfiguration command must be
+parsed as a single argument, so be sure to enclose it
+between quotes.
 
  You don't have to use qinit for modules that are not reconfigured,
  remember to run qinit asynchronously in this case, e.g.:
