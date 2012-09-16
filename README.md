@@ -41,6 +41,8 @@ On each screen, windows are divided in two sets:
 - the primary window (generally only one window),
 - the docked windows (everything else).
 
+![screenshot](doc/screenshot.jpg)
+
 The primary window is the application on which you are working,
 whereas docked windows are support windows or background tasks.
 However, docked windows are not iconified windows (and docks
