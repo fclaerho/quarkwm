@@ -17,7 +17,7 @@ Quick Installation Procedure
 2. Update the content of `setup.sh` as suited for your system:
 	`MEDIUMFONT`, `SMALLFONT`, `BIGFONT` and `XLIBPATH`.
 3. Compile: `$ ./setup.sh`.
-	See modules below for a description of the binaries.
+	See the 'modules' section below for a description of the binaries.
 4. Modify your `.xinitrc`.
 	If you plan to use qbar, you need those supplementary variables:
 	`$XTERM`, `$PLAYER`, `$MAILER`, `$BROWSER`;
@@ -25,7 +25,7 @@ Quick Installation Procedure
 5. Restart your session.
 
 If you encounter any problem, please read the following detailed
-procedure (which contain additional notes that may be useful).
+procedure which contain useful additional explanations.
 
 Modules
 -------
@@ -55,20 +55,20 @@ Detailed Installation Procedure
 
 1. Decompress the archive: `$ tar zxvf quark3_(version).tgz`
 
-2. Update the content of `setup.sh` to comply with your installation.
+2. Update the configuration variables of `setup.sh` to comply with your installation.
 
-	The following variables may be modified:
-	- `MEDIUMFONT`, `SMALLFONT`, `BIGFONT`
-		Use fonts that are installed on your system.
-		You can use `xfontsel` or `xlsfonts` to choose other fonts.
-	- `XLIBPATH`
-		Path to your X11 library.
-		The script does not attempt to find the path to libX11.so.x.
-		If the default value does not work, you have to modify it manually;
-		Try `$ locate libX11.so|head -1|xargs dirname` and use this command result to set XLIBPATH.
-		Depending on your system the locate database may not be up-to-date or even not available at all.
-		An alternative would be `$ which startx|xargs dirname`, then replace 'bin/' by 'lib/'.
-		Once again results may vary depending on your system organization.
+	`MEDIUMFONT`, `SMALLFONT`, `BIGFONT`.
+	Use fonts that are installed on your system.
+	You can use `xfontsel` or `xlsfonts` to choose other fonts.
+
+	`XLIBPATH`.
+	Path to your X11 library.
+	The script does not attempt to find the path to libX11.so.x.
+	If the default value does not work, you have to modify it manually;
+	Try `$ locate libX11.so|head -1|xargs dirname` and use this command result to set XLIBPATH.
+	Depending on your system the locate database may not be up-to-date or even not available at all.
+	An alternative would be `$ which startx|xargs dirname`, then replace 'bin/' by 'lib/'.
+	Once again results may vary depending on your system organization.
 
 3. Make the two files `setup.sh` and `build.sh` executable: `$ chmod u+x setup.sh build.sh`
 
