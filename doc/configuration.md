@@ -152,8 +152,8 @@ of another dock if they are nested). Two docks are available by
 default, which should be sufficient. This number cannot be
 reconfigured dynamically, you have to modify the source code to
 add/remove a dock but the modification is trivial:
-1. edit qwm.c,
-2. jump to line 19: 'Dock gDocks[]={{0,0,30},{0,3,20}};'
+1. edit `qwm.c`,
+2. jump to line 19: `Dock gDocks[]={{0,0,30},{0,3,20}};`
 3. add/remove an entry (see below for the meaning of each field),
 4. recompile and restart your session.
 
@@ -174,22 +174,22 @@ An entry is composed of the following values: {reverse,side,size}
 - size is a percentage of the screen width (if side is left or right) or height (if side is top or bottom).
 
 So the default configuration {{0,0,30},{0,3,20}} means:
-- {0,0,30} A dock on the left (2nd 0), using 30% of the screen width from top to bottom (1st 0).
-- {0,3,20} A dock on the bottom (3), using 20% of the screen height, from left to right (1st 0).
+- `{0,0,30}` A dock on the left (2nd 0), using 30% of the screen width from top to bottom (1st 0).
+- `{0,3,20}` A dock on the bottom (3), using 20% of the screen height, from left to right (1st 0).
 
 For example, if you want to add a dock on the right, using 10% of
 the screen width and storing windows from the bottom to the top,
 add the following entry: {1,1,10}.
 You can also nest the docks, for instance, to get two successive
 docks on the left, using respectively 30% and 10% of the screen
-width: gDocks={{0,0,30},{0,0,10}}.
+width: `gDocks={{0,0,30},{0,0,10}}`.
 
 If you simply want to update an existing dock parameter, you can
 use qctl, as for the keyboard. The 3 parameters can be changed.
 
 NOTE: Dock indexes start from 0 (so the second dock index is 1).
 
-E.g.
+Example:
 1. To change the second dock size to 30%:
 
 		$ ps -A|grep qwm
@@ -222,48 +222,48 @@ First the list of operations:
 
 ### Keyboard Shortcuts
 
-  Key Ids and associated default shortcuts:
-  - 0, terminal (default: win+e)
-  - 1, media player (default: win+p)
-  - 2, mailer (default: win+m/,) m: Azery kbd, ,: Qwerty.
-  - 3, browser (default: win+b)
+Key Ids and associated default shortcuts:
+- 0, **terminal** (default: win+e)
+- 1, **media player** (default: win+p)
+- 2, **mailer** (default: win+m/,) m: Azery kbd, ,: Qwerty.
+- 3, **browser** (default: win+b)
 
-  Proceed as for qwm, e.g. to change the terminal shortcut to 'win+t':
-  type '$ qctl 5767 setKeycode 0 28'.
+Proceed as for qwm, e.g. to change the terminal shortcut to 'win+t':
 
-  If you prefer to edit directly the source code:
-  - edit qbar.c
-  - jump to line 17: 'I gOffset=1,gSide=3,gH,gKeys[]={26,33,47,56};'
-  - replace the value(s) for gKeys (the order is given in the list
-    above). Take care to not change the array size.
-  - recompile and restart qbar.
+	$ qctl 5767 setKeycode 0 28
+
+If you prefer to edit directly the source code:
+1. edit `qbar.c`
+2. jump to line 17: `I gOffset=1,gSide=3,gH,gKeys[]={26,33,47,56};`
+3. replace the value(s) for `gKeys` (the order is given in the list above).
+4. recompile and restart `qbar`.
 
 ### Clock Position
 
-  Parameters of the clock:
-  - side (like for docks: 0 for left, 1 right, 2 top, 3 bottom).
-  - offset (% from top or left of the screen depending on side).
+Parameters of the clock:
+- side (like for docks: 0 for left, 1 right, 2 top, 3 bottom).
+- offset (% from top or left of the screen depending on side).
 
-  Option 1: Modify the source code
-  - edit qbar.c
-  - jump to line 17: 'I gOffset=1,gSide=3,gH,gKeys[]={26,33,47,56};'
-  - change the value of gOffset and gSide,
-  - recompile and restart qbar.
+Option 1: Modify the source code
+1. edit `qbar.c`
+2. jump to line 17: `I gOffset=1,gSide=3,gH,gKeys[]={26,33,47,56};`
+3. change the value of `gOffset` and `gSide`,
+4. recompile and restart `qbar`.
 
-  Option 2: Use qctl
-   E.g. To set the bar on the top (2) with an offset of 20%:
+Option 2: Use `qctl`
+E.g. To set the bar on the top (2) with an offset of 20%:
+
 	$ ps -A|grep qbar
 	5767 tty1     00:00:00 qbar
 	$ qctl 5767 setPosition 2 20
 
-
 QRun configuration
 ------------------
 
- There is only one parameter than can be reconfigured for Qrun, the
- shortcut to summon the text box, proceed as for qwm or qbar:
- either edit qrun.c, change the value of gKey (line 19), recompile
- and restart, or use qctl: $ qctl (qrun pid) setKeycode 0 (keycode).
+There is only one parameter than can be reconfigured for Qrun, the
+shortcut to summon the text box, proceed as for qwm or qbar:
+either edit `qrun.c`, change the value of `gKey` (line 19), recompile
+and restart, or use `qctl`: `$ qctl (qrun pid) setKeycode 0 (keycode)`.
 
 
 Communication Bus, Additional Notes
@@ -271,12 +271,12 @@ Communication Bus, Additional Notes
 
 ### Implementation
 
-  The communication bus is based on an IPC message queue coupled with
-  a signal (SIGHUP) to allow events multiplexing with select (nap.c).
-  The message queue used can be viewed using the command 'ipcs' (and
-  deleted with ipcrm -q (qid) where (qid) is the queue id returned by
-  'ipcs'). Only one module is allowed to call closeBus() (as it
-  deletes the list), this is done by qwm.
+The communication bus is based on an IPC message queue coupled with
+a signal (SIGHUP) to allow events multiplexing with select (nap.c).
+The message queue used can be viewed using the command 'ipcs' (and
+deleted with ipcrm -q (qid) where (qid) is the queue id returned by
+'ipcs'). Only one module is allowed to call closeBus() (as it
+deletes the list), this is done by qwm.
 
 ### Bus Usage: Minimal Code Sample
 
@@ -305,9 +305,9 @@ Communication Bus, Additional Notes
 		return 0;
 	}
 
- Once compiled (copy the source code in a file, say test.c and type
- ./setup.sh test.c) and run, this program can interact with qctl:
- - qctl (pid) help
- - qctl (pid) 1 0 0 +
- - qctl (pid) 2 0 0 +
+Once compiled (copy the source code in a file, say test.c and type
+./setup.sh test.c) and run, this program can interact with qctl:
+- qctl (pid) help
+- qctl (pid) 1 0 0 +
+- qctl (pid) 2 0 0 +
 
