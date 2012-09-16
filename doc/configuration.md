@@ -97,13 +97,11 @@ between quotes.
 
  You don't have to use qinit for modules that are not reconfigured,
  remember to run qinit asynchronously in this case, e.g.:
-	---8<---
+
 	...
 	/path/to/quark3/qinit -start qbar -ctl qbar 'setKeycode 0 28'&
 	/path/to/quark3/qrun&
 	/path/to/quark3/qwm
-	--->8---
-
 
 Qwm Configuration
 -----------------
@@ -209,6 +207,7 @@ Qbar configuration
 ------------------
 
  First the list of operations:
+
 	$ ps -A|grep qbar
 	5767 tty1     00:00:00 qbar
 	$ qctl 5767 help
@@ -280,7 +279,6 @@ Communication Bus, Additional Notes
 
 ### Bus Usage: Minimal Code Sample
 
-	---8<---
 	#define log(_...) (fprintf(stderr,NAME "/ " _),fprintf(stderr,"\n"))
 	#define E(_...) (log("Error: " _),_exit(1),0)
 	typedef unsigned int I;
@@ -305,7 +303,6 @@ Communication Bus, Additional Notes
 		while(1) if(nap(0,0,0)==1) processMsg();
 		return 0;
 	}
-	--->8---
 
  Once compiled (copy the source code in a file, say test.c and type
  ./setup.sh test.c) and run, this program can interact with qctl:
