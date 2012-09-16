@@ -48,13 +48,14 @@ Detailed Installation Procedure
 		An alternative would be `$ which startx|xargs dirname`, then replace 'bin/' by 'lib/'.
 		Once again results may vary depending on your system organization.
 
- 3. Make the two files `setup.sh` and `build.sh` executable: `$ chmod u+x setup.sh build.sh`
+3. Make the two files `setup.sh` and `build.sh` executable: `$ chmod u+x setup.sh build.sh`
 
     **build.sh** is a small script independent of any project which performs the compilation job;
 	It is called by `setup.sh` with the appropriate flags for the Quark modules.
 
- 4. Compile the sources: `$ ./setup.sh`.
-    It should end with 'Ok', otherwise read the paragraph 'Compilation failure' below.
+4. Compile the sources: `$ ./setup.sh`.
+
+	It should end with 'Ok', otherwise read the paragraph 'Compilation failure' below.
 
 	By default `setup.sh` compiles all the modules.
 	If you are already familiar with QuarkWM and only need some specific modules,
@@ -102,10 +103,11 @@ Detailed Installation Procedure
 		The font named `snap`, among other nice ones,
 		can be downloaded there: http://artwizaleczapka.sourceforge.net/
 
- 6. Modify your X startup file `~/.xinitrc`.
+6. Modify your X startup file `~/.xinitrc`.
+
 	Specify QuarkWM as your new window manager and to start the other tools.
 
-    Example of `.xinitrc`:
+	Example of `.xinitrc`:
 
 		export XTERM='xterm -bg black -fg lightgreen'
 		export PLAYER='xmms -t'
@@ -116,35 +118,35 @@ Detailed Installation Procedure
 		/path/to/quark3/qrun&
 		/path/to/quark3/qwm
 
-    This example is ok if the default configuration suits you,
-    otherwise you will need additional lines to reconfigure the
-    modules with qctl and qinit (see `configuration.txt`).
+	This example is ok if the default configuration suits you,
+	otherwise you will need additional lines to reconfigure the
+	modules with qctl and qinit (see `configuration.txt`).
 
-    Use whatever program you wish to setup your background image, qbg
-    was just an example here. Other possibility:
-    `display -window root yourFavoriteWallpaper.jpg` (`display` is not
-    guaranteed to be installed on your system).
+	Use whatever program you wish to setup your background image, qbg
+	was just an example here. Other possibility:
+	`display -window root yourFavoriteWallpaper.jpg` (`display` is not
+	guaranteed to be installed on your system).
 
-    NOTE1: If you set up an image background (with `display` for 
-           instance as explained above) with an asynchronous command
-           and use qbar, it is possible that qbar is executed faster:
-           the clock is drawn but the image is rendered above so the
-           clock will initially be hidden. To avoid this case, simply
-           avoid to launch the 1st program asynchronously:
+	If you set up an image background (with `display` for 
+	instance as explained above) with an asynchronous command
+	and use qbar, it is possible that qbar is executed faster:
+	the clock is drawn but the image is rendered above so the
+	clock will initially be hidden. To avoid this case, simply
+	avoid to launch the 1st program asynchronously:
 
-			display -window root wallpaper.jpg # No &
-			/path/to/quark3/qbar&
+		display -window root wallpaper.jpg # No &
+		/path/to/quark3/qbar&
 
-           By using this command, qbar is launched only after the
-           completion of the other command (display) so that first
-           the wallpaper is rendered and then the clock is rendered
-           without conflict.
+	By using this command, qbar is launched only after the
+	completion of the other command (display) so that first
+	the wallpaper is rendered and then the clock is rendered
+	without conflict.
 
-    NOTE2: qbar uses the 4 environment variables `$XTERM`, `$PLAYER`,
-           `$MAILER` and `$BROWSER` to launch the applications, so
-           either setup those variables in your shell startup
-           files (`.bashrc` if you're using bash for instance) or
-           directly into the `.xinitrc` as shown above (better).
+	Qbar uses the 4 environment variables `$XTERM`, `$PLAYER`,
+	`$MAILER` and `$BROWSER` to launch the applications, so
+	either setup those variables in your shell startup
+	files (`.bashrc` if you're using bash for instance) or
+	directly into the `.xinitrc` as shown above (better).
 
  7. Restart your X session.
 
