@@ -18,7 +18,7 @@ Quick Installation Procedure
 2. Update the content of `setup.sh` as needed:
    `MEDIUMFONT`, `SMALLFONT`, `BIGFONT` and `XLIBPATH`.
 3. Compile: `$ ./setup.sh`
-4. Modify your .xinitrc. If you plan to use qbar, you need those
+4. Modify your `.xinitrc`. If you plan to use qbar, you need those
    supplementary variables: `$XTERM`, `$PLAYER`, `$MAILER`, `$BROWSER`.
    (See below for an example of `.xinitrc`). 
 5. Restart your session.
@@ -32,36 +32,36 @@ Detailed Installation Procedure
 
  1. Decompress the archive: `$ tar zxvf quark3_(version).tgz`
 
- 2. Update the content of 'setup.sh' to comply with your installation:
+ 2. Update the content of 'setup.sh' to comply with your installation.
     The following variables may be modified:
-    - MEDIUMFONT, SMALLFONT, BIGFONT
+    - `MEDIUMFONT`, `SMALLFONT`, `BIGFONT`:
       Use fonts that are installed on your system, or check the
-      default values are indeed valid. You can use 'xfontsel' or
-      'xlsfonts' to choose other fonts.
-    - XLIBPATH (path to X11 library)
+      default values are indeed valid. You can use `xfontsel` or
+      `xlsfonts` to choose other fonts.
+    - `XLIBPATH`:
+      Path to your X11 library.
       The script does not attempt to find the path to libX11.so.x.
       If the default value does not work, you have to modify it
-      manually. Try 'locate libX11.so|head -1|xargs dirname' and
+      manually. Try `$ locate libX11.so|head -1|xargs dirname` and
       use this command result to set XLIBPATH. Depending on your
       system the locate database may not be up-to-date or even
       not available at all, so if this command fails try something
-      else: for instance 'which startx|xargs dirname' and replace
+      else: for instance `$ which startx|xargs dirname` and replace
       'bin/' by 'lib/'. Once again results may vary depending on
       your system organization.
 
- 3. Check that the two files 'setup.sh' and '.build.sh'
+ 3. Check that the two files `setup.sh` and `build.sh`
     are executable, if you're not sure, type:
-	$ chmod u+x setup.sh
-	$ chmod u+x .build.sh
+	`$ chmod u+x setup.sh build.sh`
 
-    NOTE: .build.sh is a small script independent of any project which
-          performs the real compilation job, it is called by setup.sh
+    NOTE: `build.sh` is a small script independent of any project which
+          performs the real compilation job, it is called by `setup.sh`
           with the appropriate flags for the Quark modules.
 
  4. Compile the sources:
-	$ ./setup.sh
-    It should end with 'Ok', otherwise read the paragraph 'Compilation
-    failure' below.
+	`$ ./setup.sh`
+    It should end with 'Ok';
+    otherwise read the paragraph 'Compilation failure' below.
 
     NOTE1: By default setup.sh compiles all the modules. If you are
            already familiar with QuarkWM and only need some specific
