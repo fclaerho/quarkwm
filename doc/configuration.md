@@ -108,42 +108,42 @@ Qwm Configuration
 
 ### Keyboard Shortcuts
 
-	The default meta key is the 'windows' key. It cannot be changed dynamically.
-	If, however, you're using a keyboard without this key,
-	you'll have to modify the sources: simply change every instance of the
-	constant 'Mod4Mask' in x11.h and replace it by Mod1Mask (alt) for instance.
-	Remember to recompile the modules and to restart your X session.
+The default meta key is the 'windows' key. It cannot be changed dynamically.
+If, however, you're using a keyboard without this key,
+you'll have to modify the sources: simply change every instance of the
+constant 'Mod4Mask' in x11.h and replace it by Mod1Mask (alt) for instance.
+Remember to recompile the modules and to restart your X session.
 
-	Key Ids and associated default shortcuts:
-	- 0, **exit** (default: win+end)
-	- 1, **cycle focus** (default: win+tab)
-	- 2, **swap primary/focus** (default: win+a/q) a: Azerty kbd, q: Qwerty.
-	- 3, **focus primary** (default: win+z/w) z: Azerty kbd, w: Qwerty.
-	- 4, **kill focus** (default: win+x)
-	- 5, **close focus** (default: win+c)
-	- 6, set focus in **full screen** (default: win+f)
-	- 7, **hide all** (default: win+esc)
-	- 8, **cycle primary** (default: win+&) (used when docks are full)
+Key Ids and associated default shortcuts:
+- 0, **exit** (default: win+end)
+- 1, **cycle focus** (default: win+tab)
+- 2, **swap primary/focus** (default: win+a/q) a: Azerty kbd, q: Qwerty.
+- 3, **focus primary** (default: win+z/w) z: Azerty kbd, w: Qwerty.
+- 4, **kill focus** (default: win+x)
+- 5, **close focus** (default: win+c)
+- 6, set focus in **full screen** (default: win+f)
+- 7, **hide all** (default: win+esc)
+- 8, **cycle primary** (default: win+&) (used when docks are full)
 
-	To change a key, you must know the new keycode value first, to this
-	end you can use the program `xev` (provided with x11/xorg).
+To change a key, you must know the new keycode value first, to this
+end you can use the program `xev` (provided with x11/xorg).
 
-	Option 1: Modify the source code
-	- edit qwm.c,
-	- jump to line 18: `I gKeys[]={103,23,24,25,53,54,41,9,10};`
-	- replace the value(s) (the order is given in the list above).
-		Take care to not change the array size.
-	- recompile and restart your session.
+Option 1: Modify the source code
+- edit qwm.c,
+- jump to line 18: `I gKeys[]={103,23,24,25,53,54,41,9,10};`
+- replace the value(s) (the order is given in the list above).
+	Take care to not change the array size.
+- recompile and restart your session.
 
-	Option 2: Use qctl
-	E.g. To set the keycode 42 for 'exit' (of keyid 0, see above):
+Option 2: Use qctl
+E.g. To set the keycode 42 for 'exit' (of keyid 0, see above):
 
-		$ ps -A|grep qwm
-		5768 tty1     00:00:00 qwm
-		$ qctl 5768 setKeycode 0 42
+	$ ps -A|grep qwm
+	5768 tty1     00:00:00 qwm
+	$ qctl 5768 setKeycode 0 42
 
-	NOTE:
-	`$ qctl 5768 setKeycode 0 42` is equivalent to `$ qctl 5768 2 0 42` as shown by `qctl 5768 help`.
+NOTE:
+`$ qctl 5768 setKeycode 0 42` is equivalent to `$ qctl 5768 2 0 42` as shown by `qctl 5768 help`.
 
 ### Docks
 
