@@ -114,7 +114,6 @@ Detailed Installation Procedure
 
     Example of `.xinitrc`:
 
-		---8<---
 		export XTERM='xterm -bg black -fg lightgreen'
 		export PLAYER='xmms -t'
 		export MAILER='thunderbird'
@@ -123,49 +122,48 @@ Detailed Installation Procedure
 		/path/to/quark3/qbar&
 		/path/to/quark3/qrun&
 		/path/to/quark3/qwm
-		--->8---
 
     This example is ok if the default configuration suits you,
     otherwise you will need additional lines to reconfigure the
-    modules with qctl and qinit (see configuration.txt).
+    modules with qctl and qinit (see `configuration.txt`).
 
     Use whatever program you wish to setup your background image, qbg
     was just an example here. Other possibility:
-    'display -window root yourFavoriteWallpaper.jpg' ('display' is not
+    `display -window root yourFavoriteWallpaper.jpg` (`display` is not
     guaranteed to be installed on your system).
 
-    NOTE1: If you set up an image background (with 'display' for 
+    NOTE1: If you set up an image background (with `display` for 
            instance as explained above) with an asynchronous command
            and use qbar, it is possible that qbar is executed faster:
            the clock is drawn but the image is rendered above so the
            clock will initially be hidden. To avoid this case, simply
            avoid to launch the 1st program asynchronously:
-			...
+
 			display -window root wallpaper.jpg # No &
 			/path/to/quark3/qbar&
-			...
+
            By using this command, qbar is launched only after the
            completion of the other command (display) so that first
            the wallpaper is rendered and then the clock is rendered
            without conflict.
 
-    NOTE2: qbar uses the 4 environment variables $XTERM, $PLAYER,
-           $MAILER and $BROWSER to launch the applications, so
+    NOTE2: qbar uses the 4 environment variables `$XTERM`, `$PLAYER`,
+           `$MAILER` and `$BROWSER` to launch the applications, so
            either setup those variables in your shell startup
-           files (.bashrc if you're using bash for instance) or
-           directly into the .xinitrc as shown above (better).
+           files (`.bashrc` if you're using bash for instance) or
+           directly into the `.xinitrc` as shown above (better).
 
  7. Restart your X session.
 
  8. If you're using a desktop manager (gdm, kdm, etc.), remember
-    to select 'Default X session' to use your .xinitrc instead
+    to select 'Default X session' to use your `.xinitrc` instead
     or the system-wide startup file or the previous configuration.
 
 FINAL NOTE: Be sure to have played a bit with QuarkWM and to know
             the basic shortcuts/limits before starting to work
             seriously with it.
             If something goes wrong (forgot the exit shortcut?),
-            you can always use the sequence <ctrl><alt><backspace>
+            you can always use the sequence \<ctrl\>\<alt\>\<backspace\>
             to kill your X session (remember that your data won't
             be saved in this case as all the applications you
             started are simply killed).
