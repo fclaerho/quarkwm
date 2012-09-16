@@ -113,6 +113,7 @@ Detailed Installation Procedure
     your new window manager and to start the other tools.
 
     Example of `.xinitrc`:
+
 		---8<---
 		export XTERM='xterm -bg black -fg lightgreen'
 		export PLAYER='xmms -t'
