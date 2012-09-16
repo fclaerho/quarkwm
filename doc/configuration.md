@@ -3,32 +3,34 @@ Quark3 Modules Configuration
 
 _30 Sep. 2007._
 
-
 Communication Bus & qctl
 ------------------------
 
- There is no configuration file for Quark, thus you can either modify
- the source code to adapt the configuration to your needs (which is
- rather deprecated but straightforward) or you can use the builtin
- communication system: each Quark module is 'connected' to a common
- message bus and can send commands or request data. A module will
- only process messages identified by its pid. You can use qctl to
- send messages from the command line (qctl allow you to use names
- instead of raw codes which is bit more user friendly).
+There is no configuration file for Quark, thus you can either modify
+the source code to adapt the configuration to your needs (which is
+rather deprecated but straightforward) or you can use the builtin
+communication system: each Quark module is 'connected' to a common
+message bus and can send commands or request data. A module will
+only process messages identified by its pid. You can use qctl to
+send messages from the command line (qctl allow you to use names
+instead of raw codes which is bit more user friendly).
 
  E.g. to get the qwm version:
+
 	$ ps -A|grep qwm
 	5768 tty1     00:00:00 qwm
 	$ qctl 5768 version
 	quark3/ Version 3.4
 
- NOTE: 'quark3/' is a common prefix for any module message and is not
-       related to the reply received by qctl in the above example.
+NOTE:
+'quark3/' is a common prefix for any module message and is not
+related to the reply received by qctl in the above example.
 
- Messages exchanged are of the form: {op key value} where each field
- is an unsigned integer. They are only designed for discrete operations
- (no massive data exchanges). To list the operations supported by a
- module, use 'help', example:
+Messages exchanged are of the form: `{op key value}` where each field
+is an unsigned integer. They are only designed for discrete operations
+(no massive data exchanges). To list the operations supported by a 
+module, use `help`, example:
+
 	$ qctl 5768 help
 	quark3/ Module @5768, 11 ops:
 	quark3/ 1 _ _ : Request version
@@ -43,14 +45,14 @@ Communication Bus & qctl
 	quark3/ 10 dockid _ : Request dock side
 	quark3/ 11 dockid _ : Request dock size%
 
- For instance the second line (1 _ _ : Request version) means that
- a message with op=1, key=anything, value=anything, sent to qwm,
- requests its version. The command $ qctl 5768 version (above) is
- in fact (almost) equivalent to $ qctl 5768 1 0 0 (or any value
- instead of 0). To wait a reply after a command using raw codes with
- qctl, add '+' at the end, so 'qctl 5768 version' really is equivalent
- to 'qctl 5768 1 0 0 +'. If you simply want to update a module
- parameter, there is no reply to await.
+For instance the second line (1 _ _ : Request version) means that
+a message with op=1, key=anything, value=anything, sent to qwm,
+requests its version. The command $ qctl 5768 version (above) is
+in fact (almost) equivalent to $ qctl 5768 1 0 0 (or any value
+instead of 0). To wait a reply after a command using raw codes with
+qctl, add '+' at the end, so 'qctl 5768 version' really is equivalent
+to 'qctl 5768 1 0 0 +'. If you simply want to update a module
+parameter, there is no reply to await.
 
 
 Storing Your New Configuration
