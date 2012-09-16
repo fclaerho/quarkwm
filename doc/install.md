@@ -15,12 +15,13 @@ Quick Installation Procedure
 ----------------------------
 
 1. Decompress the archive.
-2. Update the content of `setup.sh` as needed:
-   `MEDIUMFONT`, `SMALLFONT`, `BIGFONT` and `XLIBPATH`.
+2. Update the content of `setup.sh` as suited for your system:
+	`MEDIUMFONT`, `SMALLFONT`, `BIGFONT` and `XLIBPATH`.
 3. Compile: `$ ./setup.sh`
-4. Modify your `.xinitrc`. If you plan to use qbar, you need those
-   supplementary variables: `$XTERM`, `$PLAYER`, `$MAILER`, `$BROWSER`.
-   (See below for an example of `.xinitrc`). 
+4. Modify your `.xinitrc`.
+	If you plan to use qbar, you need those supplementary variables:
+	`$XTERM`, `$PLAYER`, `$MAILER`, `$BROWSER`;
+	See below for an example of `.xinitrc`. 
 5. Restart your session.
 
 If you encounter any problem, please read the following detailed
@@ -30,54 +31,45 @@ procedure (which contain additional notes that may be useful).
 Detailed Installation Procedure
 -------------------------------
 
- 1. Decompress the archive: `$ tar zxvf quark3_(version).tgz`
+1. Decompress the archive: `$ tar zxvf quark3_(version).tgz`
 
- 2. Update the content of `setup.sh` to comply with your installation.
-    The following variables may be modified:
-    - `MEDIUMFONT`, `SMALLFONT`, `BIGFONT`:
-      Use fonts that are installed on your system, or check the
-      default values are indeed valid. You can use `xfontsel` or
-      `xlsfonts` to choose other fonts.
-    - `XLIBPATH`:
-      Path to your X11 library.
-      The script does not attempt to find the path to libX11.so.x.
-      If the default value does not work, you have to modify it
-      manually. Try `$ locate libX11.so|head -1|xargs dirname` and
-      use this command result to set XLIBPATH. Depending on your
-      system the locate database may not be up-to-date or even
-      not available at all, so if this command fails try something
-      else: for instance `$ which startx|xargs dirname` and replace
-      'bin/' by 'lib/'. Once again results may vary depending on
-      your system organization.
+2. Update the content of `setup.sh` to comply with your installation.
 
- 3. Check that the two files `setup.sh` and `build.sh`
-    are executable, if you're not sure, type:
-	`$ chmod u+x setup.sh build.sh`
+	The following variables may be modified:
+	- `MEDIUMFONT`, `SMALLFONT`, `BIGFONT`
+		Use fonts that are installed on your system.
+		You can use `xfontsel` or `xlsfonts` to choose other fonts.
+	- `XLIBPATH`
+		Path to your X11 library.
+		The script does not attempt to find the path to libX11.so.x.
+		If the default value does not work, you have to modify it manually;
+		Try `$ locate libX11.so|head -1|xargs dirname` and use this command result to set XLIBPATH.
+		Depending on your system the locate database may not be up-to-date or even not available at all.
+		An alternative would be `$ which startx|xargs dirname`, then replace 'bin/' by 'lib/'.
+		Once again results may vary depending on your system organization.
 
-    NOTE: `build.sh` is a small script independent of any project which
-          performs the real compilation job, it is called by `setup.sh`
-          with the appropriate flags for the Quark modules.
+ 3. Make the two files `setup.sh` and `build.sh` executable: `$ chmod u+x setup.sh build.sh`
 
- 4. Compile the sources:
-	`$ ./setup.sh`
-    It should end with 'Ok';
-    otherwise read the paragraph 'Compilation failure' below.
+    **build.sh** is a small script independent of any project which performs the compilation job;
+	It is called by `setup.sh` with the appropriate flags for the Quark modules.
 
-    NOTE1: By default `setup.sh` compiles all the modules. If you are
-           already familiar with QuarkWM and only need some specific
-           modules (only qwm for instance) then simply invoke `setup.sh`
-           with the module source name, e.g. `$ ./setup.sh qwm.c`.
+ 4. Compile the sources: `$ ./setup.sh`.
+    It should end with 'Ok', otherwise read the paragraph 'Compilation failure' below.
+
+	By default `setup.sh` compiles all the modules.
+	If you are already familiar with QuarkWM and only need some specific modules,
+	then simply invoke `setup.sh` with the module source name, e.g. `$ ./setup.sh qwm.c`.
 
     **Compilation Failure**
-     If the compilation fails, check `XLIBPATH` as explained above.
-     If the library is not found you should get something like:
-     `ld: cannot find -lX11`.
-     If this is not the error cause, please post a message on
-     the forum (or send it to me by mail, see readme.txt/contact)
-     detailing the problem (remember to copy/paste the error
-     using the verbose mode: `$ ./setup.sh V`). You can also try
-     to debug the code yourself if you wish, recompile everything
-     in development mode `$ ./setup.sh D` before starting.
+		If the compilation fails, check `XLIBPATH` as explained above.
+		If the library is not found you should get something like:
+		`ld: cannot find -lX11`.
+		If this is not the error cause, please post a message on
+		the forum (or send it to me by mail, see readme.txt/contact)
+		detailing the problem (remember to copy/paste the error
+		using the verbose mode: `$ ./setup.sh V`). You can also try
+		to debug the code yourself if you wish, recompile everything
+		in development mode `$ ./setup.sh D` before starting.
 
     If the compilation succeeds, you get several binaries:
       - **qwm**, the window manager.
@@ -100,17 +92,18 @@ Detailed Installation Procedure
       - **qinit**, a tool to reconfigure the modules in .xinitrc,
         see `configuration.txt` for details.
 
- 5. Check the fonts are ok, try `qhelp` for instance, you should
-    see 3 types of font (small/medium/big). If one of them is
-    not viewable or if the execution fails with an error message
-    saying it cannot load a font, modify the corresponding value
-    in `setup.sh` and restart from step 2. Also try `qbar`.
+5. Check the fonts are ok.
+	Try `qhelp` for instance, you should see 3 types of font (small/medium/big).
+	If one of them is not viewable or if the execution fails with an error message about loading fonts,
+	modify the corresponding value in `setup.sh` and restart from step 2.
+	You may also try `qbar`.
 
-    NOTE: The font named `snap`, among other nice ones, can be
-          downloaded there: http://artwizaleczapka.sourceforge.net/
+    NOTE:
+		The font named `snap`, among other nice ones,
+		can be downloaded there: http://artwizaleczapka.sourceforge.net/
 
- 6. Modify your X startup file `~/.xinitrc` to specify QuarkWM as
-    your new window manager and to start the other tools.
+ 6. Modify your X startup file `~/.xinitrc`.
+	Specify QuarkWM as your new window manager and to start the other tools.
 
     Example of `.xinitrc`:
 
