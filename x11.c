@@ -1,4 +1,4 @@
-// Copyright (c) 2007 FC - Licenced under the GPLv3.
+// copyright (c) 2007-2014 fclaerhout.fr, released under the MIT license.
 
 #include <X11/Xlib.h>
 

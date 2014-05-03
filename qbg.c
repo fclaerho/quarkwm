@@ -1,4 +1,4 @@
-// Copyright (c) 2007 FC - Licenced under the GPLv3.
+// copyright (c) 2007-2014 fclaerhout.fr, released under the MIT license.
 
 #define log(_...) (fprintf(stderr,NAME "/ " _),fprintf(stderr,"\n"))
 #define E(_...) (log("Error: " _),exit(1),0);

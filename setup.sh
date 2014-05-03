@@ -1,4 +1,5 @@
 #!/bin/sh
+# copyright (c) 2007-2014 fclaerhout.fr, released under the MIT license.
 
 MEDIUMFONT=-*-lucida-medium-r-*-*-12-*-*-*-*-*-*-*
 BIGFONT=-*-lucida-bold-r-*-*-26-*-*-*-*-*-*-*

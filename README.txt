@@ -1,37 +1,12 @@
-FOREWORD ❮‹
-===========
-
-_15 Sep. 2012._
-
-Time flies.
-I resurrected this old project in order to archive it here in my git repository but it is **no longer maintained**.
-
-The coding style is highly debatable and shall neither be considered as an example for anyone nor representative of my current style.
-That being said, it was an attempt at a minimalist coding style, and I'm still a minimalist.
-A few gadgets apart (component-oriented architecture, runtime configuration...),
-this remains a usable skeleton project for anyone looking to start a new homebrew window manager for X11.
-The documentation is (relatively) pretty detailed, so dig in for explanations.
-
-I've refreshed the documentation syntax (which is now markdown) to make it more readable on github, its content is mostly unchanged.
-Unfortunately this project was not handled by a RCS, thus there is no revision history per se;
-You'll find earlier revisions, dating from 2006, as tarballs in the repository.
-This project is still hosted on sourceforge, where it was first released, see the feedback section below.
-
-* * *
-
-Quark3 Overview ❮‹
-==================
-
-_30 Sep. 2007._
-
+30th Sep. 2007.
 Quark[WM] is a small (15k) and fast window manager designed to
 increase your productivity by:
 - organizing your windows (position and size),
 - letting you optimize this window organization policy,
 - avoid multiple obscure configuration files (there's none),
 - allow a dynamic reconfiguration,
-- allow to work only with the keyboard (as long as your programs
-  themselves can be driven with the keyboard),
+- allow to work only with the keyboard
+  (as long as your programs are keyboard-drivable)
 - allow to work with the mouse if you need it.
 
 The main goal here is to minimize the usual causes of time wasting
@@ -64,8 +39,7 @@ docks are full, the remaining windows are simply stacked under the
 primary window, you are informed of this situation by a supplementary
 icon in the toolbar.
 
-Default Keyboard Shortcuts
---------------------------
+DEFAULT KEYBOARD SHORTCUTS
 
 Some shortcuts depend on the keyboard mapping, use qhelp to
 know the exact shortcuts on your system. In the following
@@ -86,8 +60,7 @@ know the exact shortcuts on your system. In the following
 - qbar, Launch browser: win+b
 - qrun, Open run box: win+r
 
-Toolbar Usage
--------------
+TOOLBAR USAGE
 
 You can click anywhere in the toolbar, as the operation only
 depends on the button used, icons are just here to help
@@ -99,9 +72,7 @@ The toolbar is hidden in fullscreen mode.
 - middle button: Toggle fullscreen
 - right button: Close window
 
-
-Problems, Requests, Feedback & Contact
---------------------------------------
+PROBLEMS, REQUESTS, FEEDBACK & CONTACT
 
 For any remark/bug report/etc. don't hesitate to use the forum:
 http://sourceforge.net/projects/quarkwm/. Any feedback will be
@@ -114,8 +85,7 @@ You can also contact me directly through the sourceforge interface.
 
 EDIT: I removed the email which is no longer valid.
 
-Related Material
-----------------
+RELATED MATERIAL
 
 Quark has been designed to be small, it implies that you may miss
 some features (but still like the window management policy) in
@@ -128,3 +98,31 @@ this case, check the following other window managers:
 See www.xwinman.org for a more complete list of wm, and
 http://www.gilesorr.com/wm/table.html for reviews.
 
+UPDATES
+
+3rd may 2014.
+
+Updated license from GPL3 to MIT.
+
+15th sep. 2012.
+
+Time flies.
+I resurrected this old project in order to archive it here in my git
+repository but it is **no longer maintained**.
+
+The coding style is highly debatable and shall neither be considered
+as an example for anyone nor representative of my current style.
+That being said, it was an attempt at a minimalist coding style, and
+I'm still a minimalist. A few gadgets apart (component-oriented
+architecture, runtime configuration...), this remains a usable
+skeleton project for anyone looking to start a new homebrew window
+manager for X11. The documentation is (relatively) pretty detailed,
+so dig in for explanations.
+
+I've refreshed the documentation syntax (which is now markdown) to
+make it more readable on github, its content is mostly unchanged.
+Unfortunately this project was not handled by a RCS, thus there is
+no revision history per se; You'll find earlier revisions, dating
+from 2006, as tarballs in the repository. This project is still
+hosted on sourceforge, where it was first released, see the feedback
+section below.
